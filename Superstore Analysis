@@ -1,0 +1,35 @@
+-- all data
+
+SELECT *
+FROM superstore;
+
+--statistic about average rating
+
+SELECT AVG(average_rating)
+FROM superstore;
+
+--statistic about max price
+
+SELECT *, MAX(price)
+FROM superstore;
+
+--statistic about most instock
+
+SELECT *, MAX(stock_quantity)
+FROM superstore;
+
+--statistic about item prices (total instock value)
+
+SELECT item_name, category, price, stock_quantity, stock_quantity * price AS total_value
+FROM superstore;
+
+-- statistic about item prices (sum of total inventory)
+
+SELECT SUM(stock_quantity * price) AS total_value
+FROM superstore;
+
+-- statistic about stock quantity by category
+
+SELECT category, SUM(price * stock_quantity) AS total_cost_inventory, SUM(stock_quantity) AS total_stock_quantity
+FROM superstore
+Group BY category;
